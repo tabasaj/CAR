@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main - Car Management</title>
+    <link rel="stylesheet" href="style/global.css">
+</head>
+
+<body class="main-page">
+    <div class="menu-row">
+        <iframe src="components/menu.html"></iframe>
+    </div>
+    <div class="car-row">
+        <iframe id="content-frame" src="components/home.html"></iframe>
+    </div>
+
+    <div id="logout-modal" class="logout-modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="logout-title">
+        <div class="logout-modal__dialog">
+            <h3 id="logout-title" class="logout-modal__title">Sign out?</h3>
+            <p class="logout-modal__text">Are you sure you want to logout?</p>
+            <div class="logout-modal__actions">
+                <button type="button" class="logout-modal__btn logout-modal__btn--secondary" id="logout-cancel">Cancel</button>
+                <button type="button" class="logout-modal__btn logout-modal__btn--primary" id="logout-confirm">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script/jquery.min.js"></script>
+    <script src="script/nav.js"></script>
+    <script>
+        initMainNavigation();
+    </script>
+</body>
+
+</html>

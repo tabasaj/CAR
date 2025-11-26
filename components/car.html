@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management</title>
+    <link rel="stylesheet" href="../style/global.css">
+</head>
+
+<body class="car-body">
+    <main class="car-listing">
+        <header class="car-listing__header">
+            <div>
+                <p class="car-listing__eyebrow">Available Models</p>
+                <h1 class="car-listing__title">Cars Lineup</h1>
+                <p class="car-listing__subtitle">Pick the build that fits your drive.</p>
+            </div>
+            <div class="car-listing__controls">
+                <input id="car-search" class="car-listing__search" type="text" placeholder="Search cars...">
+                <button id="car-add-btn" class="car-listing__add-btn" type="button">Add Car</button>
+            </div>
+        </header>
+
+        <section class="car-grid">
+            <article class="car-card" data-car-id="grs">
+                <div class="car-card__actions">
+                    <button class="car-card__action car-card__action--menu" type="button" aria-label="Actions for GR-S" data-car-id="grs">
+                        <span class="car-card__action-icon">◂</span>
+                    </button>
+                    <div class="car-card__menu" aria-hidden="true">
+                        <button class="car-card__menu-item car-card__menu-view" type="button" data-car-id="grs">
+                            <img class="car-card__menu-icon" src="../assets/icons/pencil.svg" alt="" aria-hidden="true">
+                        </button>
+                        <button class="car-card__menu-item car-card__menu-delete" type="button" data-car-id="grs">
+                            <img class="car-card__menu-icon" src="../assets/icons/trash-2.svg" alt="" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+                <div class="car-card__media">
+                    <button class="car-card__color-nav car-card__color-nav--prev is-hidden" type="button" aria-label="Previous color" data-nav="prev">&lsaquo;</button>
+                    <img class="car-card__image" src="../assets/hilux2.8_gr_red.webp" alt="Hilux 2.8 GR-S in red">
+                    <button class="car-card__color-nav car-card__color-nav--next is-hidden" type="button" aria-label="Next color" data-nav="next">&rsaquo;</button>
+                </div>
+                <div class="car-card__content">
+                    <div class="car-card__meta">
+                        <span class="car-card__badge">GR-S</span>
+                        <span class="car-card__price">₱2,480,000</span>
+                    </div>
+                    <h2 class="car-card__title">HILUX 2.8 GR-S 4x4 A/T</h2>
+                    <p class="car-card__text">Performance-focused with GR Sport styling.</p>
+                    <div class="car-card__specs">
+                        <span>6 Speed AT</span>
+                        <span>Diesel</span>
+                        <span>5 seats</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="car-card" data-car-id="conquest">
+                <div class="car-card__actions">
+                    <button class="car-card__action car-card__action--menu" type="button" aria-label="Actions for Conquest" data-car-id="conquest">
+                        <span class="car-card__action-icon">◂</span>
+                    </button>
+                    <div class="car-card__menu" aria-hidden="true">
+                        <button class="car-card__menu-item car-card__menu-view" type="button" data-car-id="conquest">
+                            <img class="car-card__menu-icon" src="../assets/icons/pencil.svg" alt="" aria-hidden="true">
+                        </button>
+                        <button class="car-card__menu-item car-card__menu-delete" type="button" data-car-id="conquest">
+                            <img class="car-card__menu-icon" src="../assets/icons/trash-2.svg" alt="" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+                <div class="car-card__media">
+                    <button class="car-card__color-nav car-card__color-nav--prev is-hidden" type="button" aria-label="Previous color" data-nav="prev">&lsaquo;</button>
+                    <img class="car-card__image" src="../assets/hilux2.8_con_red.webp" alt="Hilux 2.8 Conquest in red">
+                    <button class="car-card__color-nav car-card__color-nav--next is-hidden" type="button" aria-label="Next color" data-nav="next">&rsaquo;</button>
+                </div>
+                <div class="car-card__content">
+                    <div class="car-card__meta">
+                        <span class="car-card__badge">Conquest</span>
+                        <span class="car-card__price">₱2,210,000</span>
+                    </div>
+                    <h2 class="car-card__title">HILUX 2.8 CONQUEST 4x4 A/T</h2>
+                    <p class="car-card__text">Trail-ready utility with daily comfort.</p>
+                    <div class="car-card__specs">
+                        <span>6 Speed AT</span>
+                        <span>Diesel</span>
+                        <span>5 seats</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="car-card" data-car-id="vibrant">
+                <div class="car-card__actions">
+                    <button class="car-card__action car-card__action--menu" type="button" aria-label="Actions for Vibrant" data-car-id="vibrant">
+                        <span class="car-card__action-icon">◂</span>
+                    </button>
+                    <div class="car-card__menu" aria-hidden="true">
+                        <button class="car-card__menu-item car-card__menu-view" type="button" data-car-id="vibrant">
+                            <img class="car-card__menu-icon" src="../assets/icons/pencil.svg" alt="" aria-hidden="true">
+                        </button>
+                        <button class="car-card__menu-item car-card__menu-delete" type="button" data-car-id="vibrant">
+                            <img class="car-card__menu-icon" src="../assets/icons/trash-2.svg" alt="" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+                <div class="car-card__media">
+                    <button class="car-card__color-nav car-card__color-nav--prev is-hidden" type="button" aria-label="Previous color" data-nav="prev">&lsaquo;</button>
+                    <img class="car-card__image" src="../assets/hilux2.8_vibrant_blue.png" alt="Hilux 2.8 Vibrant in blue">
+                    <button class="car-card__color-nav car-card__color-nav--next is-hidden" type="button" aria-label="Next color" data-nav="next">&rsaquo;</button>
+                </div>
+                <div class="car-card__content">
+                    <div class="car-card__meta">
+                        <span class="car-card__badge">Vibrant</span>
+                        <span class="car-card__price">₱2,300,000</span>
+                    </div>
+                    <h2 class="car-card__title">HILUX 2.8 VIBRANT 4x4 A/T</h2>
+                    <p class="car-card__text">Vivid colorways with the same Hilux capability.</p>
+                    <div class="car-card__specs">
+                        <span>6 Speed AT</span>
+                        <span>Diesel</span>
+                        <span>5 seats</span>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+    <div id="car-modal-root" class="car-modal__overlay is-hidden"></div>
+    <div id="car-form-modal-root" class="car-modal__overlay is-hidden"></div>
+
+    <script src="../script/jquery.min.js"></script>
+    <script src="../script/localstorage.js"></script>
+    <script src="../script/car.js"></script>
+    <script src="../script/search.js"></script>
+</body>
+
+</html>

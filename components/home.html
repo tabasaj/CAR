@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilux Carousel</title>
+    <link rel="stylesheet" href="../style/global.css">
+</head>
+
+<body class="home-body">
+    <section class="car-carousel" id="car-carousel">
+        <div class="car-carousel__top">
+            <div class="car-carousel__title-group">
+                <span class="car-carousel__badge">Showroom</span>
+                <h1 class="car-carousel__heading" id="car-title">HILUX 2.8 GR-S 4x4 A/T</h1>
+            </div>
+
+            <div class="car-carousel__price-card">
+                <div class="car-carousel__price-main">
+                    <span class="car-carousel__currency">₱</span>
+                    <span class="car-carousel__price-value" id="car-price">2,480,000</span>
+                </div>
+                <div class="car-carousel__price-label">MSRP</div>
+                <div class="car-carousel__meta">
+                    <div class="car-carousel__meta-item">
+                        <span class="car-carousel__meta-value" id="car-transmission">6 Speed AT</span>
+                        <span class="car-carousel__meta-label">Transmission</span>
+                    </div>
+                    <div class="car-carousel__meta-item">
+                        <span class="car-carousel__meta-value" id="car-fuel">Diesel</span>
+                        <span class="car-carousel__meta-label">Fuel Type</span>
+                    </div>
+                    <div class="car-carousel__meta-item">
+                        <span class="car-carousel__meta-value" id="car-seating">5</span>
+                        <span class="car-carousel__meta-label">Seating Capacity</span>
+                    </div>
+                </div>
+                <button class="car-carousel__interest-btn is-hidden" id="car-interest-btn" type="button">Interested</button>
+            </div>
+        </div>
+
+        <div class="car-carousel__stage">
+            <button class="car-carousel__nav car-carousel__nav--prev" type="button" aria-label="Previous model">
+                <span class="car-carousel__chevron">&lsaquo;</span>
+            </button>
+
+            <div class="car-carousel__image-frame">
+                <img id="car-image" src="../assets/hilux2.8_gr_red.webp" alt="Toyota Hilux GR-S in Emotional Red">
+            </div>
+
+            <button class="car-carousel__nav car-carousel__nav--next" type="button" aria-label="Next model">
+                <span class="car-carousel__chevron">&rsaquo;</span>
+            </button>
+        </div>
+
+        <div class="car-carousel__details">
+            <p class="car-carousel__tagline" id="car-tagline">Performance-focused with GR Sport styling.</p>
+            <p class="car-carousel__color-name" id="car-color-name">Emotional Red</p>
+
+            <div class="car-carousel__colors">
+                <div class="car-carousel__color-label">Colors</div>
+                <div class="car-carousel__swatches" id="car-colors">
+                    <!-- Colors injected by carouselcar.js -->
+                </div>
+            </div>
+        </div>
+
+        <div class="car-carousel__progress" id="car-progress"></div>
+    </section>
+
+    <div id="interest-modal" class="interest-modal is-hidden" role="dialog" aria-modal="true" aria-labelledby="interest-title">
+        <div class="interest-modal__dialog">
+            <h3 id="interest-title" class="interest-modal__title">Interested in this car?</h3>
+            <p class="interest-modal__text">Share your details and we will save this inquiry to your purchases.</p>
+            <form id="interest-form" class="interest-modal__form">
+                <label class="interest-modal__label">
+                    <span>Full name</span>
+                    <input class="interest-modal__input" id="interest-name" type="text" placeholder="Juan Dela Cruz" required>
+                </label>
+                <label class="interest-modal__label">
+                    <span>Card number</span>
+                    <input class="interest-modal__input" id="interest-card" type="text" inputmode="numeric" maxlength="19" placeholder="**** **** **** 1234" required>
+                </label>
+                <div class="interest-modal__row">
+                    <label class="interest-modal__label">
+                        <span>Expiry</span>
+                        <input class="interest-modal__input" id="interest-expiry" type="text" inputmode="numeric" maxlength="5" placeholder="MM/YY" required>
+                    </label>
+                    <label class="interest-modal__label">
+                        <span>PIN</span>
+                        <input class="interest-modal__input" id="interest-pin" type="password" inputmode="numeric" maxlength="4" placeholder="****" required>
+                    </label>
+                </div>
+                <label class="interest-modal__label">
+                    <span>Address</span>
+                    <div class="interest-modal__input-group">
+                        <input class="interest-modal__input" id="interest-address" type="text" placeholder="Tap GPS to fill" readonly required>
+                        <button type="button" class="interest-modal__btn interest-modal__btn--ghost" id="interest-gps">GPS</button>
+                    </div>
+                    <small class="interest-modal__help">We’ll fill this from your current location.</small>
+                </label>
+                <div class="interest-modal__actions">
+                    <button type="button" class="interest-modal__btn interest-modal__btn--secondary" id="interest-cancel">Cancel</button>
+                    <button type="submit" class="interest-modal__btn interest-modal__btn--primary" id="interest-save">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="interest-toast" class="interest-toast is-hidden" role="status">
+        <div class="interest-toast__dialog">
+            <p class="interest-toast__text">Saved to purchases.</p>
+            <button type="button" class="interest-toast__btn" id="interest-toast-close">Close</button>
+        </div>
+    </div>
+
+    <script src="../script/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"></script>
+    <script src="../script/backbone-min.js"></script>
+    <script src="../script/localstorage.js"></script>
+    <script src="../script/purchases.js"></script>
+    <script src="../script/carouselcar.js"></script>
+    <script src="../script/interest.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<div class="car-modal">
+    <button class="car-modal__close" type="button" aria-label="Close details" data-close-modal>&times;</button>
+    <div class="car-modal__media">
+        <button class="car-modal__color-nav car-modal__color-nav--prev is-hidden" type="button" aria-label="Previous color" data-modal-nav="prev">&lsaquo;</button>
+        <img class="car-modal__image" src="" alt="">
+        <button class="car-modal__color-nav car-modal__color-nav--next is-hidden" type="button" aria-label="Next color" data-modal-nav="next">&rsaquo;</button>
+    </div>
+    <div class="car-modal__body">
+        <div class="car-modal__row car-modal__row--top">
+            <input class="car-modal__title car-modal__input" data-field="title" type="text" placeholder="Title" value="Model title">
+            <input class="car-modal__badge car-modal__input" data-field="badge" type="text" placeholder="Badge" value="Badge">
+            <div class="car-modal__input-group">
+                <span class="car-modal__prefix">₱</span>
+                <input class="car-modal__price car-modal__input" data-field="price" data-number type="number" min="0" step="1" placeholder="Amount" value="0">
+            </div>
+        </div>
+        <textarea class="car-modal__tagline car-modal__input car-modal__textarea" data-field="tagline" placeholder="Tagline">Tagline</textarea>
+        <div class="car-modal__specs car-modal__specs--grid">
+            <input class="car-modal__input" data-field="transmission" type="text" placeholder="Transmission" value="Transmission">
+            <input class="car-modal__input" data-field="fuel" type="text" placeholder="Fuel type" value="Fuel">
+            <input class="car-modal__input" data-field="seating" data-number type="number" min="1" step="1" placeholder="Seating capacity" value="5">
+        </div>
+        <div class="car-modal__colors">
+            <div class="car-modal__colors-header">
+                <h3>Colors</h3>
+                <span class="car-modal__colors-help">Edit color labels</span>
+            </div>
+            <div class="car-modal__color-list" data-color-fields></div>
+        </div>
+        <div class="car-modal__actions">
+            <button class="car-modal__save" type="button" data-save-modal>Save</button>
+        </div>
+    </div>
+</div>

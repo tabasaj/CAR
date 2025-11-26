@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up</title>
+    <link rel="stylesheet" href="../style/global.css">
+</head>
+
+<body class="auth-body">
+    <main class="auth">
+        <section class="auth__intro">
+            <p class="auth__eyebrow">Welcome back</p>
+            <h1 class="auth__title">Manage your garage</h1>
+            <p class="auth__text">Sign in to continue or create a new account to start tracking your cars and clients.</p>
+        </section>
+
+        <section class="auth__card">
+            <div class="auth__tabs" role="tablist" aria-label="Auth form tabs">
+                <button class="auth__tab is-active" data-tab="login" type="button" aria-selected="true">Login</button>
+                <button class="auth__tab" data-tab="signup" type="button" aria-selected="false">Sign Up</button>
+            </div>
+
+            <form class="auth__form" id="auth-login" aria-label="Login form">
+                <div id="auth-toast" class="auth__toast is-hidden" role="status"></div>
+                <label class="auth__label">
+                    <span>Username</span>
+                    <input class="auth__input" type="text" name="username" placeholder="Enter username" required>
+                </label>
+                <label class="auth__label">
+                    <span>Password</span>
+                    <input class="auth__input" type="password" name="password" placeholder="••••••••" required>
+                </label>
+                <div class="auth__actions">
+                    <label class="auth__checkbox">
+                        <input type="checkbox" name="remember">
+                        <span>Remember me</span>
+                    </label>
+                    <a class="auth__link" href="#">Forgot password?</a>
+                </div>
+                <button class="auth__submit" type="submit">Login</button>
+            </form>
+
+            <form class="auth__form is-hidden" id="auth-signup" aria-label="Sign up form">
+                <label class="auth__label">
+                    <span>Username</span>
+                    <input class="auth__input" type="text" name="username" placeholder="Create a username" required>
+                </label>
+                <label class="auth__label">
+                    <span>Password</span>
+                    <input class="auth__input" type="password" name="password" placeholder="Create a password" required>
+                </label>
+                <button class="auth__submit" type="submit">Create account</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        (() => {
+            const tabs = document.querySelectorAll('.auth__tab');
+            const loginForm = document.getElementById('auth-login');
+            const signupForm = document.getElementById('auth-signup');
+            const ROLE_KEY = 'app-role';
+            const USER_KEY = 'app-user-current';
+            const USERS_KEY = 'app-users';
+            const toast = document.getElementById('auth-toast');
+
+            const setActive = (tab) => {
+                tabs.forEach((btn) => {
+                    const isActive = btn === tab;
+                    btn.classList.toggle('is-active', isActive);
+                    btn.setAttribute('aria-selected', String(isActive));
+                });
+
+                const target = tab.dataset.tab;
+                if (target === 'login') {
+                    loginForm.classList.remove('is-hidden');
+                    signupForm.classList.add('is-hidden');
+                } else {
+                    signupForm.classList.remove('is-hidden');
+                    loginForm.classList.add('is-hidden');
+                }
+            };
+
+            const loadUsers = () => {
+                try {
+                    const raw = window.localStorage && localStorage.getItem(USERS_KEY);
+                    return raw ? JSON.parse(raw) : [];
+                } catch (e) {
+                    return [];
+                }
+            };
+
+            const saveUsers = (users) => {
+                try {
+                    window.localStorage && localStorage.setItem(USERS_KEY, JSON.stringify(users));
+                } catch (e) {
+                    // ignore storage errors
+                }
+            };
+
+            const setRole = (role) => {
+                try {
+                    window.localStorage && localStorage.setItem(ROLE_KEY, role);
+                } catch (e) {
+                    // ignore storage errors
+                }
+            };
+
+            const setUser = (username) => {
+                try {
+                    window.localStorage && localStorage.setItem(USER_KEY, username);
+                } catch (e) {
+                    // ignore storage errors
+                }
+            };
+
+            const showToast = (message, type = 'error') => {
+                if (!toast) return;
+                toast.textContent = message;
+                toast.classList.remove('is-hidden', 'auth__toast--success', 'auth__toast--error');
+                toast.classList.add(type === 'success' ? 'auth__toast--success' : 'auth__toast--error');
+            };
+
+            const handleLoginSubmit = (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const username = (form.username?.value || '').trim().toLowerCase();
+                const password = (form.password?.value || '').trim().toLowerCase();
+
+                const isAdmin = username === 'admin' && password === 'admin';
+
+                if (isAdmin) {
+                    setRole('admin');
+                    setUser('admin');
+                    showToast('Login successful. Redirecting...', 'success');
+                    window.parent.postMessage({ loginSuccess: true, role: 'admin', user: 'admin' }, '*');
+                    return;
+                }
+
+                const users = loadUsers();
+                const match = users.find((u) => u.username === username && u.password === password);
+                if (!match) {
+                    showToast('Invalid credentials. Please try again or sign up.', 'error');
+                    return;
+                }
+
+                setRole('client');
+                setUser(username);
+                showToast('Login successful. Redirecting...', 'success');
+                window.parent.postMessage({ loginSuccess: true, role: 'client', user: username }, '*');
+            };
+
+            const handleSignupSubmit = (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const username = (form.username?.value || '').trim().toLowerCase();
+                const password = (form.password?.value || '').trim().toLowerCase();
+
+                if (!username || !password) {
+                    showToast('Please provide a username and password.', 'error');
+                    return;
+                }
+
+                const users = loadUsers();
+                const exists = users.some((u) => u.username === username);
+                if (exists) {
+                    showToast('Username already exists. Choose another or login.', 'error');
+                    return;
+                }
+
+                users.push({ username, password });
+                saveUsers(users);
+                form.reset();
+                loginForm.username.value = username;
+                loginForm.password.value = '';
+                setActive(tabs[0]);
+                showToast('Account created. Please login.', 'success');
+                loginForm.username.focus();
+            };
+
+            tabs.forEach((btn) => {
+                btn.addEventListener('click', () => setActive(btn));
+            });
+
+            loginForm.addEventListener('submit', handleLoginSubmit);
+            signupForm.addEventListener('submit', handleSignupSubmit);
+        })();
+    </script>
+</body>
+
+</html>

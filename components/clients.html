@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients</title>
+    <link rel="stylesheet" href="../style/global.css">
+</head>
+
+<body class="clients-body">
+    <main class="clients">
+        <header class="clients__header">
+            <div>
+                <p class="clients__eyebrow">Client list</p>
+                <h1 class="clients__title">Recent Buyers</h1>
+                <p class="clients__subtitle">Quick view of customer and purchase details.</p>
+            </div>
+        </header>
+
+        <section class="clients__table-card">
+            <div class="clients__table-wrapper">
+                <table class="clients-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Full name</th>
+                            <th>Card details</th>
+                            <th>Address / GPS</th>
+                            <th>Car chosen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="clients-empty-row">
+                            <td colspan="5">No purchases yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="clients-empty" class="clients__empty is-hidden">No purchases yet.</div>
+        </section>
+    </main>
+
+    <script src="../script/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"></script>
+    <script src="../script/backbone-min.js"></script>
+    <script src="../script/purchases.js"></script>
+    <script src="../script/clients.js"></script>
+</body>
+
+</html>

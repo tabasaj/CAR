@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="../style/global.css">
+</head>
+
+<body class="menu-body">
+    <nav id="main-nav" class="nav-bar">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <span class="nav-brand__mark"></span>
+                <span class="nav-brand__text">MYSTIFY</span>
+            </div>
+            <ul id="nav-list" class="nav-links">
+                <li><a href="#" class="active" data-page="home" id="nav-home">Home</a></li>
+                <li><a href="#" data-page="loginsignupform" id="nav-auth">Login/Signup</a></li>
+                <li><a href="#" data-page="car" id="nav-car">Car</a></li>
+                <li><a href="#" data-page="clients" id="nav-clients">Clients</a></li>
+                <li><a href="#" id="nav-logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script src="../script/jquery.min.js"></script>
+    <script src="../script/nav.js"></script>
+    <script>
+        initMenuNavigation();
+    </script>
+</body>
+
+</html>
